@@ -14,16 +14,5 @@ all:
 	@cmake --build $(BUILD_DIR) --config=$(BUILD_TYPE) --parallel $(NUM_JOBS) $(CMAKE_BUILD_FLAGS)
 
 clean:
-	@$(RM) -r $(BUILD_DIR) src/assets/*.inl
+	@$(RM) -r $(BUILD_DIR)
 
-run: all
-	@./build/csprite
-
-$(eval PYTHON := $(if $(PYTHON),$(PYTHON),python3))
-
-# make gen-assets PYTHON=python3
-gen-assets:
-	@$(PYTHON) tools/create_icons.py
-	@echo -- Icons generated
-	@$(PYTHON) tools/create_assets.py --cxx=$(CXX)
-	@echo -- Assets generated
