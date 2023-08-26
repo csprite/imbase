@@ -4,9 +4,9 @@ a base library with imgui included
 ---
 ## What it does?
 
-- [x] Handles window initialization (using GLFW3 as for now)
-- [ ] Handles imgui initialization
-- [ ] Handles cross-platform texture creation
+- [x] Window initialization (GLFW3)
+- [x] ImGui initialization
+- [ ] Cross-API Textures Support
 
 ---
 ## Thanks
