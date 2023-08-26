@@ -15,9 +15,9 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install CMake (Linux)
+    - name: Install CMake & Xorg-dev (Linux)
       if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: sudo apt-get update && sudo apt-get install cmake
+      run: sudo apt-get update && sudo apt-get install cmake xorg-dev
 
     - name: Install CMake (MacOS)
       if: ${{ matrix.os == 'macos-latest' }}
