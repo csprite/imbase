@@ -12,7 +12,7 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 project(imbase C CXX)
 
-file(GLOB SRC_FILES src/base/main.cpp)
+file(GLOB SRC_FILES src/base/window.cpp)
 include(${CMAKE_CURRENT_SOURCE_DIR}/common_defs.cmake)
 add_library(imbase STATIC ${SRC_FILES})
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/)
