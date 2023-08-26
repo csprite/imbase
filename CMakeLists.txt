@@ -12,12 +12,12 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 project(imbase C CXX)
 
-file(GLOB SRC_FILES src/base/window.cpp)
+file(GLOB SRC_FILES src/window.cpp src/texture.cpp)
 include(${CMAKE_CURRENT_SOURCE_DIR}/common_defs.cmake)
 add_library(imbase STATIC ${SRC_FILES})
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party/)
 
-target_include_directories(imbase PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/base/include/)
+target_include_directories(imbase PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include/)
 target_link_libraries(imbase PUBLIC glad_loader)
 target_link_libraries(imbase PUBLIC glfw)
 target_link_libraries(imbase PUBLIC imgui_static)

@@ -6,7 +6,7 @@ a base library with imgui included
 
 - [x] Window initialization (GLFW3)
 - [x] ImGui initialization
-- [ ] Cross-API Textures Support
+- [x] Cross-API Textures Support (OpenGL3 as for now)
 
 ---
 ## Thanks
