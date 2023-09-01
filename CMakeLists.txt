@@ -12,7 +12,7 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 project(imbase C CXX)
 
-file(GLOB SRC_FILES src/window.cpp src/texture.cpp)
+file(GLOB SRC_FILES src/window.cpp src/texture.cpp src/launcher.cpp)
 include(${CMAKE_CURRENT_SOURCE_DIR}/common_defs.cmake)
 add_library(imbase STATIC ${SRC_FILES})
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party/)
