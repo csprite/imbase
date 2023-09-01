@@ -1,7 +1,9 @@
 #include "imbase/texture.hpp"
 #include "glad/glad.h"
 
-ImBase::Texture::Texture(int w, int h, unsigned char* pixels) {
+using namespace ImBase;
+
+Texture::Texture(int w, int h, unsigned char* pixels) {
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
@@ -28,7 +30,7 @@ ImBase::Texture::Texture(int w, int h, unsigned char* pixels) {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void ImBase::Texture::Update(unsigned char* pixels) {
+void Texture::Update(unsigned char* pixels) {
 	glBindTexture(GL_TEXTURE_2D, id);
 	/* glTexSubImage2D is better to upload the pixels since glTexImage2D basically
 	   deletes the buffer on GPU, reallocates it, and copies the data, and in glTexSubImage2D
@@ -36,7 +38,7 @@ void ImBase::Texture::Update(unsigned char* pixels) {
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 }
 
-ImBase::Texture::~Texture() {
+Texture::~Texture() {
 	glDeleteTextures(1, &id);
 	id = 0;
 }

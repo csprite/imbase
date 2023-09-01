@@ -11,7 +11,9 @@
 static GLFWwindow* window = nullptr;
 static float window_bg[3] = { 0, 0, 0 };
 
-int ImBase::Window_Init(int width, int height, const char* const title) {
+using namespace ImBase;
+
+int Window::Init(int width, int height, const char* const title) {
 	glfwInit();
 	glfwSetErrorCallback([](int error, const char* desc) -> void {
 		printf("ImBase Error: %d\n%s\n", error, desc);
@@ -55,7 +57,7 @@ int ImBase::Window_Init(int width, int height, const char* const title) {
 	return 0;
 }
 
-void ImBase::Window_SetIcon(int width, int height, unsigned char* pixels) {
+void Window::SetIcon(int width, int height, unsigned char* pixels) {
 	GLFWimage iconImage;
 	iconImage.width = width;
 	iconImage.height = height;
@@ -63,28 +65,28 @@ void ImBase::Window_SetIcon(int width, int height, unsigned char* pixels) {
 	glfwSetWindowIcon(window, 1, &iconImage);
 }
 
-void ImBase::Window_SetTitle(const char* const title) {
+void Window::SetTitle(const char* const title) {
 	glfwSetWindowTitle(window, title);
 }
 
-void ImBase::Window_SetBG(unsigned char r, unsigned char g, unsigned char b) {
+void Window::SetBG(unsigned char r, unsigned char g, unsigned char b) {
 	window_bg[0] = r / 255.0f;
 	window_bg[1] = g / 255.0f;
 	window_bg[2] = b / 255.0f;
 }
 
-bool ImBase::Window_ShouldClose() {
+bool Window::ShouldClose() {
 	return glfwWindowShouldClose(window);
 }
 
-void ImBase::NewFrame() {
+void Window::NewFrame() {
 	glfwPollEvents();
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
 
-void ImBase::EndFrame() {
+void Window::EndFrame() {
 	ImGui::Render();
 
 	glClearColor(window_bg[0], window_bg[1], window_bg[2], 1.0);
@@ -94,7 +96,7 @@ void ImBase::EndFrame() {
 	glfwSwapBuffers(window);
 }
 
-void ImBase::Window_Destroy() {
+void Window::Destroy() {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
