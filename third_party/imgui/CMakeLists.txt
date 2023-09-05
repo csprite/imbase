@@ -1,5 +1,3 @@
-include(${CMAKE_CURRENT_SOURCE_DIR}/../../common_defs.cmake)
-
 file(
 	GLOB IMGUI_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/imgui_draw.cpp
@@ -13,4 +11,6 @@ file(
 add_library(imgui_static STATIC ${IMGUI_SOURCES})
 target_include_directories(imgui_static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 target_include_directories(imgui_static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/imgui/)
+target_compile_definitions(imgui_static PUBLIC IMGUI_DISABLE_OBSOLETE_FUNCTIONS)
+target_compile_definitions(imgui_static PUBLIC IMGUI_DISABLE_OBSOLETE_KEYIO)
 
