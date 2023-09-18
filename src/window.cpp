@@ -79,7 +79,18 @@ bool Window::ShouldClose() {
 	return glfwWindowShouldClose(window);
 }
 
+static double lastTime = 0, frameDelay = 0;
+
+void Window::SetMaxFPS(int fps) {
+	if (fps <= 0) {
+		frameDelay = 0;
+	} else {
+		frameDelay = 1.f / fps;
+	}
+}
+
 void Window::NewFrame() {
+	lastTime = glfwGetTime();
 	glfwPollEvents();
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
@@ -94,6 +105,8 @@ void Window::EndFrame() {
 
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	glfwSwapBuffers(window);
+
+	while (glfwGetTime() < lastTime + frameDelay);
 }
 
 void Window::Destroy() {

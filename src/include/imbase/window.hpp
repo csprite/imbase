@@ -8,6 +8,7 @@ namespace ImBase {
 		void SetIcon(int width, int height, unsigned char* pixels);
 		void SetTitle(const char* const title);
 		void SetBG(unsigned char r, unsigned char g, unsigned char b);
+		void SetMaxFPS(int fps);
 		bool ShouldClose();
 		void NewFrame();
 		void EndFrame();
