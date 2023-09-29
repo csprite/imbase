@@ -13,8 +13,10 @@ void Launcher::OpenUrl(const char* const url) {
 	ShellExecute(0, 0, url, 0, 0, SW_SHOW);
 #elif defined(TARGET_APPLE)
 	system(("open \"" + std::string(url) + "\"").c_str());
-#else
+#elif defined(TARGET_LINUX)
 	system(("setsid xdg-open \"" + std::string(url) + "\"").c_str());
+#else
+	#error "Launcher::OpenUrl Not Implemented For Target"
 #endif
 }
 
