@@ -13,6 +13,10 @@ namespace ImBase {
 		void NewFrame();
 		void EndFrame();
 		void Destroy();
+
+		void Minimize();
+		void Restore(); // Opposite of minimize
+		void Maximize();
 	}
 }
 
