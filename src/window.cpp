@@ -119,3 +119,14 @@ void Window::Destroy() {
 	window = nullptr;
 }
 
+void Window::Minimize() {
+	glfwIconifyWindow(window);
+}
+
+void Window::Restore() {
+	glfwRestoreWindow(window);
+}
+
+void Window::Maximize() {
+	glfwMaximizeWindow(window);
+}
