@@ -12,8 +12,8 @@ namespace ImBase {
 	struct Texture {
 		unsigned int id = 0; // when using with ImGui::Image, use reinterpret_cast<ImTextureID>()
 
-		Texture(int width, int height, unsigned char* pixels, TScaleFunc scaleFunc = TScaleFunc::Nearest);
-		void Update(unsigned char* pixels);
+		Texture(int width, int height, const unsigned char* pixels, TScaleFunc scaleFunc = TScaleFunc::Nearest);
+		void Update(const unsigned char* pixels);
 		~Texture();
 		inline TScaleFunc GetScalingFunc() { return scaleFunc; }
 

@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 
 #include "imbase/window.hpp"
 #include "glad/glad.h"
@@ -65,7 +66,7 @@ void Window::SetIcon(int width, int height, unsigned char* pixels) {
 	glfwSetWindowIcon(window, 1, &iconImage);
 }
 
-void Window::SetTitle(const char* const title) {
+void Window::SetTitle(const char* title) {
 	glfwSetWindowTitle(window, title);
 }
 

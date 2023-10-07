@@ -3,7 +3,7 @@
 
 using namespace ImBase;
 
-Texture::Texture(int w, int h, unsigned char* pixels, TScaleFunc _scaleFunc) {
+Texture::Texture(int w, int h, const unsigned char* pixels, TScaleFunc _scaleFunc) {
 	scaleFunc = _scaleFunc;
 	unsigned int TexScaling = 0;
 	switch (_scaleFunc) {
@@ -21,7 +21,7 @@ Texture::Texture(int w, int h, unsigned char* pixels, TScaleFunc _scaleFunc) {
 	width = w;
 	height = h;
 
-	unsigned char* data = pixels;
+	const unsigned char* data = pixels;
 
 	if (pixels == nullptr) {
 		data = new unsigned char[width * height * 4]();
@@ -37,7 +37,7 @@ Texture::Texture(int w, int h, unsigned char* pixels, TScaleFunc _scaleFunc) {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::Update(unsigned char* pixels) {
+void Texture::Update(const unsigned char* pixels) {
 	glBindTexture(GL_TEXTURE_2D, id);
 	/* glTexSubImage2D is better to upload the pixels since glTexImage2D basically
 	   deletes the buffer on GPU, reallocates it, and copies the data, and in glTexSubImage2D

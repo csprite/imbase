@@ -8,7 +8,7 @@ using namespace ImBase;
 	#include <shellapi.h>
 #endif
 
-void Launcher::OpenUrl(const char* const url) {
+void Launcher::OpenUrl(const char* url) {
 #if defined(TARGET_WINDOWS)
 	ShellExecute(0, 0, url, 0, 0, SW_SHOW);
 #elif defined(TARGET_APPLE)

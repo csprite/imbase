@@ -4,7 +4,7 @@
 
 namespace ImBase {
 	namespace Launcher {
-		void OpenUrl(const char* const url);
+		void OpenUrl(const char* url);
 	}
 }
 
