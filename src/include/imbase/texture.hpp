@@ -3,16 +3,23 @@
 #pragma once
 
 namespace ImBase {
+	enum TScaleFunc {
+		Linear,
+		Nearest
+	};
+
 	// Note: Pixels are expected to be aligned in R-G-B-A order in memory
 	struct Texture {
 		unsigned int id = 0; // when using with ImGui::Image, use reinterpret_cast<ImTextureID>()
 
-		Texture(int width, int height, unsigned char* pixels);
+		Texture(int width, int height, unsigned char* pixels, TScaleFunc scaleFunc = TScaleFunc::Nearest);
 		void Update(unsigned char* pixels);
 		~Texture();
+		inline TScaleFunc GetScalingFunc() { return scaleFunc; }
 
 	private:
 		int width = 0, height = 0;
+		TScaleFunc scaleFunc;
 	};
 }
 
