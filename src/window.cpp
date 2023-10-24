@@ -14,7 +14,7 @@ static float window_bg[3] = { 0, 0, 0 };
 
 using namespace ImBase;
 
-int Window::Init(int width, int height, const char* const title) {
+int Window::Init(int width, int height, const char* const title, bool resizable) {
 	glfwInit();
 	glfwSetErrorCallback([](int error, const char* desc) -> void {
 		printf("ImBase Error: %d\n%s\n", error, desc);
@@ -25,6 +25,7 @@ int Window::Init(int width, int height, const char* const title) {
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 	glfwWindowHint(GLFW_CENTER_CURSOR, GLFW_TRUE);
 	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_RESIZABLE, resizable == true ? GL_TRUE : GL_FALSE);
 
 	window = glfwCreateWindow(width, height, title, NULL, NULL);
 

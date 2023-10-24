@@ -4,7 +4,7 @@
 
 namespace ImBase {
 	namespace Window {
-		int  Init(int width, int height, const char* const title);
+		int  Init(int width, int height, const char* const title, bool resizable = true);
 		void SetIcon(int width, int height, unsigned char* pixels);
 		void SetTitle(const char* title);
 		void SetBG(unsigned char r, unsigned char g, unsigned char b);
