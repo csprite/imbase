@@ -13,7 +13,12 @@ namespace ImBase {
 		unsigned int id = 0; // when using with ImGui::Image, use reinterpret_cast<ImTextureID>()
 
 		Texture(int width, int height, const unsigned char* pixels, TScaleFunc scaleFunc = TScaleFunc::Nearest);
-		void Update(const unsigned char* pixels);
+
+		// Update a sub-region of the texture, where
+		// the sub-region's coordinates are dX & dY
+		// and dW & dH are width & height of the sub-region
+		void Update(const unsigned char* pixels, unsigned int dX = 0, unsigned int dY = 0, unsigned int dW = 0, unsigned int dH = 0);
+
 		~Texture();
 		inline TScaleFunc GetScalingFunc() { return scaleFunc; }
 

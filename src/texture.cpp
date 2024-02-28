@@ -37,12 +37,19 @@ Texture::Texture(int w, int h, const unsigned char* pixels, TScaleFunc _scaleFun
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::Update(const unsigned char* pixels) {
+void Texture::Update(const unsigned char* pixels, unsigned int dX, unsigned int dY, unsigned int dW, unsigned int dH) {
+	if (dW == 0) dW = width;
+	if (dH == 0) dH = height;
+
 	glBindTexture(GL_TEXTURE_2D, id);
-	/* glTexSubImage2D is better to upload the pixels since glTexImage2D basically
-	   deletes the buffer on GPU, reallocates it, and copies the data, and in glTexSubImage2D
-	   the data is just copied onto the already existing texture. */
-	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
+	glTexSubImage2D(
+		GL_TEXTURE_2D, 0,
+		dX, dY, dW, dH,
+		GL_RGBA, GL_UNSIGNED_BYTE,
+		&pixels[((dY * width) + dX) * 4]
+	);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 }
 
 Texture::~Texture() {
